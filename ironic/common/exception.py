@@ -202,6 +202,16 @@ class InvalidMAC(Invalid):
     _msg_fmt = _("Expected a MAC address but received %(mac)s.")
 
 
+class InvalidSwitchID(Invalid):
+    _msg_fmt = _("Expected a MAC address or OpenFlow datapath_id but "
+                 "received %(switch_id)s.")
+
+
+class InvalidDatapathId(Invalid):
+    _msg_fmt = _("Expected an OpenFlow datapath_id but received "
+                 "%(datapath_id)s.")
+
+
 class InvalidStateRequested(Invalid):
     _msg_fmt = _('The requested action "%(action)s" can not be performed '
                  'on node "%(node)s" while it is in state "%(state)s".')
@@ -245,6 +255,14 @@ class NotFound(IronicException):
 class DHCPLoadError(IronicException):
     _msg_fmt = _("Failed to load DHCP provider %(dhcp_provider_name)s, "
                  "reason: %(reason)s")
+
+
+class NetworkProviderNotFound(NotFound):
+    _msg_fmt = _("Failed to load network provider %(provider_name)s.")
+
+
+class NetworkError(IronicException):
+    _msg_fmt = _("Network operation failure.")
 
 
 class DriverNotFound(NotFound):
